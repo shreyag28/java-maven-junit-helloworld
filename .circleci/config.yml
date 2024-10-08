@@ -27,23 +27,11 @@ jobs:
           name: Test
           command: mvn clean install
 
-      - run:
-          name: Save test results
-          command: |
-            mkdir -p ~/testng/results/
-            find . -type f -regex "./test-output/STMExtentReport.html" -exec cp {} ~/testng/results/ \;
-          when: always    
-          
-      - store_test_results:
-          path: test-output/testng-results.xml
-
-      - store_artifacts:
-           path: ~/testng/results/
          
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
+  Buil and test : # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test
